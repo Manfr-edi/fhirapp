@@ -7,14 +7,14 @@ import { HttpService } from '../http.service';
   styleUrls: ['./readpage.component.css']
 })
 export class ReadpageComponent implements OnInit {
-
+ id=""
   constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
   }
 
-  ReadRequest(){
-    this.httpService.getPatient();
+  async ReadRequest(){
+    await this.httpService.getPatient();
 
   }
 }
