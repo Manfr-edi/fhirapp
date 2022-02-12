@@ -1,2 +1,33 @@
 <p>readpage works!</p>
-<button (click)="ReadRequest()"> Read Patients</button>
+
+<button id="read" (click)="ReadRequest()"> Read All </button>
+<div *ngFor="let p of pat">
+
+<p onclick="read" *ngIf="p.gender !== '' && p.name[0].family !== ''"> 
+    {{p.gender}}
+    {{p.name[0].given[0]}}
+    {{p.name[0].given[1]}}
+    {{p.name[0].family}}
+    {{p.birthDate}}
+    
+
+</p>
+
+</div>
+<br>
+
+<input [(ngModel)]="id" type="text" placeholder="Inserisci id">
+<button (click)="ReadByIdRequest()"> Read Patient by Id </button>
+<button (click)="deletePatient()"> Delete </button>
+
+<br>
+<br>
+<form id="updateForm" (ngSubmit)="onSubmit()" [formGroup]="PatientForm">
+    <input type="text" placeholder="Inserisci nome" formControlName="name"><br>
+    <input type="text" placeholder="Inserisci cognome" formControlName="surname"><br>
+    <input type="text" placeholder="Inserisci genere" formControlName="gender"><br>
+    <input type="text" placeholder="Inserisci data di nascita" formControlName="birthDate"><br>
+    <button type="submit"> Crea Paziente </button>
+    <button (click)="updatePatient()"> Aggiorna </button>
+</form>
+<br> 
